@@ -33,7 +33,9 @@ async function loadGames() {
 
             <p>Version: ${game.version}</p>
 
-            <p>Downloads: ${game.downloads}</p>
+           <div class="downloads">
+    ⬇ ${game.downloads || 0}
+</div>
 
             <button class="btn mod-btn">
                 Mod Features
