@@ -23,7 +23,10 @@ header h1{
     letter-spacing:1px;
 }
 
-/* TOP BUTTONS */
+/* =========================
+   TOP BUTTONS
+   ========================= */
+
 .top-buttons{
     display:flex;
     flex-direction:column;
@@ -40,21 +43,38 @@ header h1{
     border-radius:12px;
     font-weight:600;
     color:white;
-    background:#007bff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
     box-shadow:0 4px 10px rgba(0,0,0,0.12);
     transition:0.3s;
 }
 
-.top-buttons a:hover{
-    transform:scale(1.03);
-}
-
-/* Telegram special color */
+/* Telegram button */
 .telegram-btn{
-    background:linear-gradient(135deg,#229ED9,#0077b6);
+    background:#229ED9;
 }
 
-/* SEARCH */
+/* YouTube button */
+.youtube-btn{
+    background:#FF0000;
+}
+
+/* hover effect */
+.top-buttons a:hover{
+    transform:scale(1.05);
+}
+
+/* icon size */
+.icon{
+    font-size:18px;
+}
+
+/* =========================
+   SEARCH BOX
+   ========================= */
+
 .search-section{
     text-align:center;
     margin-bottom:18px;
@@ -102,7 +122,10 @@ header h1{
     }
 }
 
-/* GAME CARD */
+/* =========================
+   GAME CARD
+   ========================= */
+
 .game-card{
     background:white;
     border-radius:14px;
@@ -134,7 +157,10 @@ header h1{
     color:#555;
 }
 
-/* BUTTONS */
+/* =========================
+   BUTTONS INSIDE CARD
+   ========================= */
+
 .btn{
     display:block;
     width:85%;
@@ -148,18 +174,21 @@ header h1{
     border:none;
 }
 
-/* MOD BUTTON */
+/* MOD FEATURES */
 .mod-btn{
     background:#ffb300;
     color:#111;
 }
 
-/* DOWNLOAD BUTTON */
+/* DOWNLOAD */
 .download-btn{
     background:#2ecc71;
 }
 
-/* POPUP */
+/* =========================
+   POPUP
+   ========================= */
+
 .popup{
     display:none;
     position:fixed;
@@ -185,7 +214,10 @@ header h1{
     cursor:pointer;
 }
 
-/* EXTRA SMALL FIX */
+/* =========================
+   SMALL MOBILE FIX
+   ========================= */
+
 @media(max-width:400px){
     header h1{
         font-size:22px;
