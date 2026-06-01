@@ -6,14 +6,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    
 <div id="loginBox">
     <h2>Admin Login</h2>
 
-    <input type="password" id="password" placeholder="Enter Password">
+    <input type="email"
+           id="email"
+           placeholder="Email">
 
-    <button onclick="login()">Login</button>
+    <br><br>
+
+    <input type="password"
+           id="password"
+           placeholder="Password">
+
+    <br><br>
+
+    <button id="loginBtn">
+        Login
+    </button>
 </div>
+
 
 <div id="adminPanel" style="display:none;">
     <h2>Add Game</h2>
