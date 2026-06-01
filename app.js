@@ -4,7 +4,8 @@ import {
     collection,
     getDocs,
     doc,
-    updateDoc
+    updateDoc,
+    increment
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const gamesContainer = document.getElementById("gamesContainer");
@@ -67,7 +68,7 @@ async function loadGames() {
         });
 
         /* =========================
-           DOWNLOAD BUTTON LOGIC
+           DOWNLOAD COUNTER FIX
         ========================== */
         const downloadBtn = card.querySelector(".download-btn");
 
@@ -77,20 +78,28 @@ async function loadGames() {
 
                 const gameRef = doc(db, "games", gameId);
 
+                // 🔥 SAFE FIRESTORE INCREMENT
                 await updateDoc(gameRef, {
-                    downloads: (game.downloads || 0) + 1
+                    downloads: increment(1)
                 });
 
-                // update UI instantly
-                game.downloads = (game.downloads || 0) + 1;
-                card.querySelector(".downloads").innerText =
-                    "⬇ " + game.downloads;
+                // UI update instantly
+                let current = parseInt(
+                    card.querySelector(".downloads")
+                        .innerText.replace("⬇", "")
+                ) || 0;
 
-                // open link
+                card.querySelector(".downloads").innerText =
+                    "⬇ " + (current + 1);
+
+                // open download link
                 window.open(game.downloadLink, "_blank");
 
             } catch (error) {
+
                 console.error("Download update failed:", error);
+
+                // still open link even if error
                 window.open(game.downloadLink, "_blank");
             }
 
@@ -101,7 +110,9 @@ async function loadGames() {
     });
 }
 
-/* POPUP CLOSE */
+/* =========================
+   POPUP CLOSE LOGIC
+========================= */
 closePopup.addEventListener("click", () => {
     popup.style.display = "none";
 });
