@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>iStud Gamer Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+```
+<div id="loginBox">
+    <h2>Admin Login</h2>
+
+    <input type="password" id="password" placeholder="Enter Password">
+
+    <button onclick="login()">Login</button>
+</div>
+
+<div id="adminPanel" style="display:none;">
+    <h2>Add Game</h2>
+
+    <input type="text" id="gameName" placeholder="Game Name"><br><br>
+
+    <input type="text" id="version" placeholder="Version"><br><br>
+
+    <input type="text" id="icon" placeholder="ImgBB Icon URL"><br><br>
+
+    <input type="text" id="downloadLink" placeholder="Download Link"><br><br>
+
+    <textarea id="features" placeholder="One mod feature per line"></textarea><br><br>
+
+    <button id="addGameBtn">Add Game</button>
+</div>
+
+<script src="admin.js" type="module"></script>
+```
+
+</body>
+</html>
