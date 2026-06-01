@@ -19,16 +19,6 @@ header h1{
     font-family:'Orbitron', sans-serif;
 }
 
-.top-buttons a{
-    display:inline-block;
-    text-decoration:none;
-    padding:10px 15px;
-    margin:2px;
-    background:#007bff;
-    color:white;
-    border-radius:8px;
-}
-
 .search-section{
     text-align:center;
     margin-bottom:20px;
@@ -132,5 +122,13 @@ header h1{
 .top-buttons a{
     width:220px;
     text-align:center;
+    text-decoration:none;
+    padding:10px 15px;
+    border-radius:8px;
+    color:white;
+    font-weight:600;
+.telegram-btn{
+    background:#229ED9;
 }
+
 
