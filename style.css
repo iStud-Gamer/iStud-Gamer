@@ -143,9 +143,8 @@ header h1{
     width:80px;
     height:80px;
     object-fit:cover;
-    border-radius:14px;
+    border-radius:0px;
     margin-bottom:6px;
-    box-shadow:0 3px 8px rgba(0,0,0,0.15);
 }
 
 .game-card h3{
