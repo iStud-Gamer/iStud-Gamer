@@ -89,15 +89,15 @@ header h1{
 /* TABLET */
 @media(max-width:768px){
     .games-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:repeat(4,1fr);
     }
 }
 
 /* SMALL MOBILE */
 @media(max-width:480px){
     .games-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:8px;
+        grid-template-columns:repeat(3,1fr);
+        gap:4px;
     }
 }
 
