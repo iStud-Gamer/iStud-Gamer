@@ -199,6 +199,6 @@ header h1{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:4px;
-    margin-top:4px;
+    gap:5px;
+    margin:6px 0;
 }
