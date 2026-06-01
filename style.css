@@ -121,7 +121,6 @@ header h1{
         grid-template-columns:repeat(2,1fr);
     }
 }
-```css
 .top-buttons{
     display:flex;
     flex-direction:column;
@@ -133,5 +132,4 @@ header h1{
     width:220px;
     text-align:center;
 }
-```
 
