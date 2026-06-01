@@ -1,32 +1,60 @@
-import { db } from "./firebase-config.js";
+import { db, auth } from "./firebase-config.js";
 
 import {
     collection,
     addDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const ADMIN_PASSWORD = "Mamamass1*";
+import {
+    signInWithEmailAndPassword,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-window.login = function () {
+const loginBtn =
+    document.getElementById("loginBtn");
+
+const addGameBtn =
+    document.getElementById("addGameBtn");
+
+loginBtn.addEventListener("click", async () => {
+
+    const email =
+        document.getElementById("email").value;
 
     const password =
         document.getElementById("password").value;
 
-    if (password === ADMIN_PASSWORD) {
+    try {
 
-        document.getElementById("loginBox").style.display = "none";
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
 
-        document.getElementById("adminPanel").style.display = "block";
+    } catch (error) {
 
-    } else {
+        console.error(error);
 
-        alert("Wrong Password");
+        alert("Login Failed");
 
     }
-};
 
-const addGameBtn =
-    document.getElementById("addGameBtn");
+});
+
+onAuthStateChanged(auth, (user) => {
+
+    if (user) {
+
+        document.getElementById("loginBox")
+            .style.display = "none";
+
+        document.getElementById("adminPanel")
+            .style.display = "block";
+
+    }
+
+});
 
 addGameBtn.addEventListener("click", async () => {
 
