@@ -10,6 +10,7 @@ body{
     padding:15px;
 }
 
+/* HEADER */
 header{
     text-align:center;
     margin-bottom:20px;
@@ -19,6 +20,38 @@ header h1{
     font-family:'Orbitron', sans-serif;
 }
 
+/* TOP BUTTONS CONTAINER */
+.top-buttons{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+}
+
+/* DEFAULT BUTTON STYLE */
+.top-buttons a{
+    width:220px;
+    text-align:center;
+    text-decoration:none;
+    padding:10px 15px;
+    border-radius:8px;
+    color:white;
+    font-weight:600;
+    background:#007bff;
+    transition:0.3s;
+}
+
+/* TELEGRAM BUTTON (override color only) */
+.telegram-btn{
+    background:#229ED9;
+}
+
+/* HOVER EFFECT */
+.top-buttons a:hover{
+    transform:translateY(-2px);
+}
+
+/* SEARCH SECTION */
 .search-section{
     text-align:center;
     margin-bottom:20px;
@@ -32,12 +65,14 @@ header h1{
     border-radius:8px;
 }
 
+/* GAME GRID */
 .games-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:15px;
 }
 
+/* GAME CARD */
 .game-card{
     background:white;
     border-radius:10px;
@@ -62,6 +97,7 @@ header h1{
     margin:5px 0;
 }
 
+/* BUTTONS INSIDE CARD */
 .btn{
     display:block;
     width:80%;
@@ -74,14 +110,17 @@ header h1{
     text-align:center;
 }
 
+/* MOD FEATURES BUTTON */
 .mod-btn{
     background:#ff9800;
 }
 
+/* DOWNLOAD BUTTON */
 .download-btn{
     background:#28a745;
 }
 
+/* POPUP */
 .popup{
     display:none;
     position:fixed;
@@ -107,28 +146,9 @@ header h1{
     cursor:pointer;
 }
 
+/* RESPONSIVE */
 @media(max-width:768px){
     .games-grid{
         grid-template-columns:repeat(2,1fr);
     }
 }
-.top-buttons{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:10px;
-}
-
-.top-buttons a{
-    width:220px;
-    text-align:center;
-    text-decoration:none;
-    padding:10px 15px;
-    border-radius:8px;
-    color:white;
-    font-weight:600;
-.telegram-btn{
-    background:#229ED9;
-}
-
-
