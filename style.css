@@ -11,7 +11,7 @@ body{
     color:#111;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 header{
     text-align:center;
     margin-bottom:18px;
@@ -27,12 +27,13 @@ header h1{
     -webkit-text-fill-color:transparent;
 }
 
-/* TOP BUTTONS */
+/* ================= TOP BUTTONS ================= */
 .top-buttons{
     display:flex;
     flex-direction:column;
     align-items:center;
     gap:10px;
+    margin-top:10px;
 }
 
 .top-buttons a{
@@ -56,16 +57,17 @@ header h1{
     transform:scale(1.04);
 }
 
-/* BUTTON COLORS */
+/* Telegram */
 .telegram-btn{
     background:linear-gradient(135deg,#229ED9,#0077b6);
 }
 
+/* YouTube */
 .youtube-btn{
     background:linear-gradient(135deg,#ff0000,#cc0000);
 }
 
-/* SEARCH */
+/* ================= SEARCH ================= */
 .search-section{
     text-align:center;
     margin-bottom:18px;
@@ -81,7 +83,7 @@ header h1{
     box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* GRID */
+/* ================= GRID ================= */
 .games-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -102,7 +104,7 @@ header h1{
     }
 }
 
-/* GAME CARD */
+/* ================= GAME CARD ================= */
 .game-card{
     background:#fff;
     border-radius:16px;
@@ -141,18 +143,43 @@ header h1{
     color:#666;
 }
 
-/* BUTTONS */
+/* ================= DOWNLOAD BADGE ================= */
+.downloads{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    padding:4px 10px;
+    font-size:12px;
+    font-weight:600;
+    color:#444;
+    background:#f1f5f9;
+    border-radius:999px;
+    margin:6px auto;
+    box-shadow:0 2px 6px rgba(0,0,0,0.06);
+}
+
+.downloads i{
+    color:#22c55e;
+    font-size:13px;
+}
+
+/* ================= BUTTONS ================= */
 .btn{
     display:block;
     width:90%;
     margin:6px auto;
     padding:9px;
-    border-radius:5px;
-    text-decoration:none;
+    border-radius:12px;
     font-size:13px;
     font-weight:600;
     cursor:pointer;
     border:none;
+    transition:0.2s;
+}
+
+.btn:hover{
+    transform:scale(1.03);
 }
 
 /* MOD BUTTON */
@@ -167,7 +194,7 @@ header h1{
     color:#fff;
 }
 
-/* POPUP */
+/* ================= POPUP ================= */
 .popup{
     display:none;
     position:fixed;
@@ -192,16 +219,4 @@ header h1{
     float:right;
     font-size:22px;
     cursor:pointer;
-}
-.downloads{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:4px;
-    padding:3px 10px;
-    font-size:12px;
-    color:#444;
-    background:#f3f4f6;
-    border-radius:20px;
-    margin:6px auto;
 }
