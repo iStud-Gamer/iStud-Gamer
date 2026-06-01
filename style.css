@@ -1,9 +1,8 @@
-css
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:'Poppins', sans-serif;
 }
 
 body{
@@ -17,7 +16,7 @@ header{
 }
 
 header h1{
-    margin-bottom:15px;
+    font-family:'Orbitron', sans-serif;
 }
 
 .top-buttons a{
