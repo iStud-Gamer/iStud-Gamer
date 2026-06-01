@@ -1,1 +1,55 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iStud Gamer</title>
 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>iStud Gamer</h1>
+
+        <div class="top-buttons">
+            <a href="https://t.me/YOUR_TELEGRAM_CHANNEL" target="_blank">
+                Join Telegram
+            </a>
+
+            <a href="#" id="howToDownload">
+                How To Download
+            </a>
+        </div>
+    </header>
+
+    <section class="search-section">
+        <input
+            type="text"
+            id="searchBox"
+            placeholder="Search Games..."
+        >
+    </section>
+
+    <section id="gamesContainer" class="games-grid">
+        <!-- Games will load here from Firestore -->
+    </section>
+
+    <!-- Mod Features Popup -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span id="closePopup">&times;</span>
+
+            <h3>Mod Features</h3>
+
+            <ul id="featuresList"></ul>
+        </div>
+    </div>
+
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="app.js"></script>
+
+</body>
+</html>
+```
