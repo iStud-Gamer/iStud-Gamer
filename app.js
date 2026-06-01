@@ -2,7 +2,9 @@ import { db } from "./firebase-config.js";
 
 import {
     collection,
-    getDocs
+    getDocs,
+    doc,
+    updateDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const gamesContainer = document.getElementById("gamesContainer");
@@ -18,12 +20,12 @@ async function loadGames() {
 
     gamesContainer.innerHTML = "";
 
-    querySnapshot.forEach((doc) => {
+    querySnapshot.forEach((gameDoc) => {
 
-        const game = doc.data();
+        const game = gameDoc.data();
+        const gameId = gameDoc.id;
 
         const card = document.createElement("div");
-
         card.className = "game-card";
 
         card.innerHTML = `
@@ -33,23 +35,22 @@ async function loadGames() {
 
             <p>Version: ${game.version}</p>
 
-           <div class="downloads">
-    ⬇ ${game.downloads || 0}
-</div>
+            <div class="downloads">
+                ⬇ ${game.downloads || 0}
+            </div>
 
             <button class="btn mod-btn">
                 Mod Features
             </button>
 
-            <a
-                href="${game.downloadLink}"
-                target="_blank"
-                class="btn download-btn"
-            >
+            <button class="btn download-btn">
                 Download
-            </a>
+            </button>
         `;
 
+        /* =========================
+           MOD FEATURES POPUP
+        ========================== */
         const modBtn = card.querySelector(".mod-btn");
 
         modBtn.addEventListener("click", () => {
@@ -57,25 +58,50 @@ async function loadGames() {
             featuresList.innerHTML = "";
 
             game.modFeatures.forEach((feature) => {
-
                 const li = document.createElement("li");
-
                 li.textContent = feature;
-
                 featuresList.appendChild(li);
-
             });
 
             popup.style.display = "block";
+        });
+
+        /* =========================
+           DOWNLOAD BUTTON LOGIC
+        ========================== */
+        const downloadBtn = card.querySelector(".download-btn");
+
+        downloadBtn.addEventListener("click", async () => {
+
+            try {
+
+                const gameRef = doc(db, "games", gameId);
+
+                await updateDoc(gameRef, {
+                    downloads: (game.downloads || 0) + 1
+                });
+
+                // update UI instantly
+                game.downloads = (game.downloads || 0) + 1;
+                card.querySelector(".downloads").innerText =
+                    "⬇ " + game.downloads;
+
+                // open link
+                window.open(game.downloadLink, "_blank");
+
+            } catch (error) {
+                console.error("Download update failed:", error);
+                window.open(game.downloadLink, "_blank");
+            }
 
         });
 
         gamesContainer.appendChild(card);
 
     });
-
 }
 
+/* POPUP CLOSE */
 closePopup.addEventListener("click", () => {
     popup.style.display = "none";
 });
