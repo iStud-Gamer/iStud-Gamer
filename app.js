@@ -1,4 +1,4 @@
-```javascript
+javascript
 import { db } from "./firebase-config.js";
 
 import {
@@ -86,4 +86,3 @@ window.addEventListener("click", (e) => {
 });
 
 loadGames();
-```
