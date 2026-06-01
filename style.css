@@ -74,12 +74,14 @@ header h1{
 
 .btn{
     display:block;
+    width:80%;
+    margin:8px auto;
     text-decoration:none;
     padding:10px;
-    margin-top:8px;
     border-radius:6px;
     color:white;
     cursor:pointer;
+    text-align:center;
 }
 
 .mod-btn{
