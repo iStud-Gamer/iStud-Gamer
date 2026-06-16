@@ -18,12 +18,12 @@ header{
     margin-bottom:20px;
     padding:10px 0;
 }
-
 header h1{
     font-size:48px;
-    font-weight:900;
-    letter-spacing:-2px;
+    font-weight:700;
+    letter-spacing:-1px;
     line-height:1;
+    margin-bottom:15px;
 }
 
 .logo-white{
