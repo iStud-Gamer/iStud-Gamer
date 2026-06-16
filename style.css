@@ -6,20 +6,22 @@
 }
 
 body{
-    background:#050B1F;
+    background:#f4ecec;
     padding:12px;
-    color:#fff;
+    color:#222;
     min-height:100vh;
 }
 
 /* ================= HEADER ================= */
 header{
+    background:#a94442;
+    margin:-12px -12px 20px -12px;
+    padding:20px;
     text-align:center;
-    margin-bottom:20px;
-    padding:10px 0;
 }
+
 header h1{
-    font-size:48px;
+    font-size:42px;
     font-weight:700;
     line-height:1;
     margin-bottom:15px;
@@ -30,56 +32,48 @@ header h1{
 }
 
 .logo-blue{
-    color:#5B8CFF;
+    color:#ffffff;
 }
 
 @media(max-width:768px){
     header h1{
-        font-size:38px;
+        font-size:34px;
     }
 }
 
 @media(max-width:480px){
     header h1{
-        font-size:30px;
+        font-size:28px;
     }
 }
 
 /* ================= TOP BUTTONS ================= */
 .top-buttons{
     display:flex;
-    flex-direction:column;
-    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
     gap:10px;
-    margin-top:10px;
 }
 
 .top-buttons a{
-    width:90%;
-    max-width:260px;
-    text-align:center;
     text-decoration:none;
-    padding:12px;
-    border-radius:14px;
-    font-weight:700;
+    padding:10px 16px;
+    border-radius:8px;
+    font-weight:600;
     color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
     transition:.25s;
 }
 
-.top-buttons a:hover{
-    transform:translateY(-3px);
-}
-
 .telegram-btn{
-    background:linear-gradient(135deg,#4F7DF3,#6A63FF);
+    background:#2563eb;
 }
 
 .youtube-btn{
-    background:linear-gradient(135deg,#ff3b3b,#ff0000);
+    background:#dc2626;
+}
+
+.top-buttons a:hover{
+    opacity:.9;
 }
 
 /* ================= SEARCH ================= */
@@ -93,119 +87,125 @@ header h1{
     max-width:500px;
     padding:14px;
     border:none;
-    border-radius:14px;
+    border-radius:10px;
     outline:none;
-    background:#0D1328;
-    color:#fff;
-    border:1px solid rgba(79,125,243,.25);
+    background:#fff;
+    color:#111;
+    border:1px solid #ddd;
     font-size:15px;
 }
 
 #searchBox::placeholder{
-    color:#8f96b2;
+    color:#888;
 }
 
 /* ================= GRID ================= */
 .games-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:14px;
+    gap:18px;
 }
 
-@media(min-width:768px){
+@media(max-width:600px){
     .games-grid{
-        grid-template-columns:repeat(3,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
-}
 
-@media(min-width:1100px){
-    .games-grid{
-        grid-template-columns:repeat(4,1fr);
+    .game-card img{
+        width:120px;
+        height:120px;
     }
 }
 
 /* ================= GAME CARD ================= */
 .game-card{
-    background:#0D1328;
-    border-radius:18px;
-    padding:14px;
-    text-align:center;
-    border:1px solid rgba(79,125,243,.15);
-    box-shadow:0 8px 24px rgba(0,0,0,.35);
-    transition:.3s;
+    background:#fff;
+    border-radius:10px;
+    padding:12px;
+    position:relative;
     overflow:hidden;
+    text-align:center;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
 
-.game-card:hover{
-    transform:translateY(-6px);
-    border-color:rgba(79,125,243,.4);
+/* Updated Ribbon */
+.game-card::before{
+    content:"UPDATED";
+    position:absolute;
+    top:0;
+    left:0;
+    background:#a94442;
+    color:#fff;
+    font-size:11px;
+    font-weight:600;
+    padding:5px 10px;
 }
 
+/* Game Image */
 .game-card img{
-    width:90px;
-    height:90px;
+    width:140px;
+    height:140px;
     object-fit:cover;
     border-radius:14px;
-    margin-bottom:10px;
-    border:2px solid rgba(79,125,243,.2);
+    margin:28px auto 12px;
+    display:block;
+    border:4px solid #a94442;
 }
 
 .game-card h3{
-    font-size:15px;
-    margin-bottom:4px;
-    font-weight:600;
-    color:#fff;
+    font-size:16px;
+    font-weight:700;
+    color:#111;
+    line-height:1.25;
+    margin-bottom:8px;
 }
 
 .game-card p{
-    font-size:12px;
-    color:#9ca3af;
+    font-size:13px;
+    color:#444;
+    text-align:left;
+    line-height:1.35;
+    margin-bottom:10px;
 }
 
-/* ================= DOWNLOAD BADGE ================= */
+/* ================= DOWNLOADS ================= */
 .downloads{
     display:inline-flex;
     align-items:center;
-    justify-content:center;
     gap:6px;
-    padding:5px 12px;
+    background:#f0f0f0;
+    color:#444;
+    border-radius:999px;
+    padding:6px 12px;
     font-size:12px;
     font-weight:600;
-    color:#fff;
-    background:#111b3d;
-    border-radius:999px;
     margin:8px auto;
 }
 
 .downloads i{
-    color:#4ade80;
+    color:#16a34a;
 }
 
 /* ================= BUTTONS ================= */
 .btn{
     display:block;
-    width:90%;
-    margin:8px auto;
+    width:100%;
     padding:10px;
-    border-radius:12px;
+    border:none;
+    border-radius:8px;
     font-size:13px;
     font-weight:600;
     cursor:pointer;
-    border:none;
-    transition:.25s;
-}
-
-.btn:hover{
-    transform:scale(1.03);
+    margin-top:8px;
 }
 
 .mod-btn{
-    background:linear-gradient(135deg,#fbbf24,#f59e0b);
-    color:#111;
+    background:#f59e0b;
+    color:#fff;
 }
 
 .download-btn{
-    background:linear-gradient(135deg,#4F7DF3,#6A63FF);
+    background:#a94442;
     color:#fff;
 }
 
@@ -217,25 +217,21 @@ header h1{
     left:0;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,.75);
-    backdrop-filter:blur(4px);
+    background:rgba(0,0,0,.7);
 }
 
 .popup-content{
-    background:#0D1328;
-    color:#fff;
+    background:#fff;
+    color:#111;
     width:90%;
     max-width:380px;
     margin:120px auto;
     padding:20px;
-    border-radius:16px;
-    border:1px solid rgba(79,125,243,.25);
-    box-shadow:0 10px 30px rgba(0,0,0,.5);
+    border-radius:10px;
 }
 
 #closePopup{
     float:right;
-    font-size:22px;
+    font-size:24px;
     cursor:pointer;
-    color:#fff;
 }
