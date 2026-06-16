@@ -36,10 +36,10 @@ async function loadGames() {
 
             <p>Version: ${game.version}</p>
 
-           <div class="downloads">
-    <i class="fa-solid fa-download"></i>
-    <span>${game.downloads || 0}</span>
-</div>
+            <div class="downloads">
+                <i class="fa-solid fa-download"></i>
+                <span>${game.downloads || 0}</span>
+            </div>
 
             <button class="btn mod-btn">
                 Mod Features
@@ -59,17 +59,19 @@ async function loadGames() {
 
             featuresList.innerHTML = "";
 
-            game.modFeatures.forEach((feature) => {
-                const li = document.createElement("li");
-                li.textContent = feature;
-                featuresList.appendChild(li);
-            });
+            if (game.modFeatures) {
+                game.modFeatures.forEach((feature) => {
+                    const li = document.createElement("li");
+                    li.textContent = feature;
+                    featuresList.appendChild(li);
+                });
+            }
 
             popup.style.display = "block";
         });
 
         /* =========================
-           DOWNLOAD COUNTER FIX
+           DOWNLOAD COUNTER
         ========================== */
         const downloadBtn = card.querySelector(".download-btn");
 
@@ -79,28 +81,30 @@ async function loadGames() {
 
                 const gameRef = doc(db, "games", gameId);
 
-                // 🔥 SAFE FIRESTORE INCREMENT
                 await updateDoc(gameRef, {
                     downloads: increment(1)
                 });
 
-                // UI update instantly
-                let current = parseInt(
-                    card.querySelector(".downloads")
-                        .innerText.replace("⬇", "")
-                ) || 0;
+                // Update UI instantly while keeping icon
+                const downloadsSpan =
+                    card.querySelector(".downloads span");
 
-                card.querySelector(".downloads").innerText =
-                    "⬇ " + (current + 1);
+                let current =
+                    parseInt(downloadsSpan.textContent) || 0;
 
-                // open download link
+                downloadsSpan.textContent = current + 1;
+
+                // Open download link
                 window.open(game.downloadLink, "_blank");
 
             } catch (error) {
 
-                console.error("Download update failed:", error);
+                console.error(
+                    "Download update failed:",
+                    error
+                );
 
-                // still open link even if error
+                // Still open download link
                 window.open(game.downloadLink, "_blank");
             }
 
@@ -124,4 +128,7 @@ window.addEventListener("click", (e) => {
     }
 });
 
+/* =========================
+   LOAD GAMES
+========================= */
 loadGames();
