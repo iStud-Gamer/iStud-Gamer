@@ -143,19 +143,22 @@ header h1{
     border-color:#4F7DF3;
 }
 
-/* UPDATED LABEL */
+/* UPDATED LABEL OVER ICON */
 
-.game-card::before{
-    content:"UPDATED";
+.ribbon{
     position:absolute;
-    top:0;
-    left:0;
+    top:18px;
+    left:50%;
+    transform:translateX(-50%);
     background:#4F7DF3;
     color:#fff;
-    font-size:11px;
+    font-size:10px;
     font-weight:600;
-    padding:5px 10px;
-    border-bottom-right-radius:8px;
+    padding:4px 10px;
+    border-radius:6px;
+    z-index:10;
+    box-shadow:0 2px 8px rgba(0,0,0,.3);
+}
 }
 
 /* GAME IMAGE */
@@ -166,7 +169,7 @@ header h1{
     object-fit:cover;
     border-radius:14px;
     display:block;
-    margin:28px auto 12px;
+    margin:22px auto 12px;
     border:3px solid #4F7DF3;
 }
 
