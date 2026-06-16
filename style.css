@@ -15,17 +15,35 @@ body{
 /* ================= HEADER ================= */
 header{
     text-align:center;
-    margin-bottom:18px;
+    margin-bottom:20px;
+    padding:10px 0;
 }
 
 header h1{
-    font-family:'Orbitron',sans-serif;
-    font-size:28px;
-    font-weight:700;
-    letter-spacing:1px;
-    background:linear-gradient(90deg,#4F7DF3,#6A63FF);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+    font-size:48px;
+    font-weight:900;
+    letter-spacing:-2px;
+    line-height:1;
+}
+
+.logo-white{
+    color:#ffffff;
+}
+
+.logo-blue{
+    color:#5B8CFF;
+}
+
+@media(max-width:768px){
+    header h1{
+        font-size:38px;
+    }
+}
+
+@media(max-width:480px){
+    header h1{
+        font-size:30px;
+    }
 }
 
 /* ================= TOP BUTTONS ================= */
@@ -57,12 +75,10 @@ header h1{
     transform:translateY(-3px);
 }
 
-/* Telegram */
 .telegram-btn{
     background:linear-gradient(135deg,#4F7DF3,#6A63FF);
 }
 
-/* YouTube */
 .youtube-btn{
     background:linear-gradient(135deg,#ff3b3b,#ff0000);
 }
@@ -184,13 +200,11 @@ header h1{
     transform:scale(1.03);
 }
 
-/* MOD BUTTON */
 .mod-btn{
     background:linear-gradient(135deg,#fbbf24,#f59e0b);
     color:#111;
 }
 
-/* DOWNLOAD BUTTON */
 .download-btn{
     background:linear-gradient(135deg,#4F7DF3,#6A63FF);
     color:#fff;
