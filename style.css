@@ -66,8 +66,12 @@ header h1{
     font-weight:600;
     color:#fff;
     transition:.3s;
-}
 
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+}
 .top-buttons a:hover{
     transform:translateY(-3px);
 }
