@@ -47,8 +47,8 @@ async function loadGames() {
             </div>
 
             <button class="btn mod-btn">
-                Mod Features
-            </button>
+    <i class="fa-solid fa-crown"></i> Mod Features
+</button>
 
             <button class="btn download-btn">
                 Download
