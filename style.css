@@ -78,6 +78,19 @@ header h1{
 
 .youtube-btn{
     background:linear-gradient(135deg,#ff3b3b,#ff0000);
+    animation:blinkButton 1s infinite;
+}
+
+@keyframes blinkButton{
+    0%{
+        opacity:1;
+    }
+    50%{
+        opacity:0.4;
+    }
+    100%{
+        opacity:1;
+    }
 }
 /* ================= GRID ================= */
 
