@@ -1,50 +1,83 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+```
+<title>iStud Gamer Admin</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
-    <title>iStud Gamer Admin</title>
-    <link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="style.css">
+```
+
 </head>
 <body>
-    
+
 <div id="loginBox">
     <h2>Admin Login</h2>
 
-    <input type="email"
-           id="email"
-           placeholder="Email">
+```
+<input
+    type="email"
+    id="email"
+    placeholder="Email"
+>
 
-    <br><br>
+<input
+    type="password"
+    id="password"
+    placeholder="Password"
+>
 
-    <input type="password"
-           id="password"
-           placeholder="Password">
+<button id="loginBtn">
+    Login
+</button>
+```
 
-    <br><br>
-
-    <button id="loginBtn">
-        Login
-    </button>
 </div>
-
 
 <div id="adminPanel" style="display:none;">
     <h2>Add Game</h2>
 
-    <input type="text" id="gameName" placeholder="Game Name"><br><br>
+```
+<input
+    type="text"
+    id="gameName"
+    placeholder="Game Name"
+>
 
-    <input type="text" id="version" placeholder="Version"><br><br>
+<input
+    type="text"
+    id="version"
+    placeholder="Version"
+>
 
-    <input type="text" id="icon" placeholder="ImgBB Icon URL"><br><br>
+<input
+    type="text"
+    id="icon"
+    placeholder="ImgBB Icon URL"
+>
 
-    <input type="text" id="downloadLink" placeholder="Download Link"><br><br>
+<input
+    type="text"
+    id="downloadLink"
+    placeholder="Download Link"
+>
 
-    <textarea id="features" placeholder="One mod feature per line"></textarea><br><br>
+<textarea
+    id="features"
+    placeholder="One mod feature per line"
+></textarea>
 
-    <button id="addGameBtn">Add Game</button>
+<button id="addGameBtn">
+    Add Game
+</button>
+```
+
 </div>
 
 <script src="admin.js" type="module"></script>
