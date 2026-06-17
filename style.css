@@ -129,7 +129,7 @@ header h1{
 .game-card{
     background:#0D1328;
     border-radius:16px;
-    padding:12px;
+    padding:8px;
     text-align:center;
     border:1px solid rgba(79,125,243,.15);
     box-shadow:0 8px 20px rgba(0,0,0,.35);
@@ -147,14 +147,14 @@ header h1{
 
 .game-card img{
     width:100%;
-    max-width:120px;
+    max-width:100px;
     aspect-ratio:1/1;
     object-fit:contain;
     display:block;
-    margin:12px auto;
-    padding:4px;
+    margin:4px auto 8px;
+    padding:0;
     border-radius:14px;
-    background:#0D1328;
+    background:transparent;
 }
 
 @media(max-width:480px){
