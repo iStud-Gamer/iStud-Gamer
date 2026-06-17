@@ -241,3 +241,81 @@ header h1{
     cursor:pointer;
     color:#fff;
 }
+/* ================= ADMIN PANEL ================= */
+
+#loginBox,
+#adminPanel{
+    max-width:500px;
+    margin:30px auto;
+    background:#0D1328;
+    padding:20px;
+    border-radius:16px;
+    border:1px solid rgba(79,125,243,.2);
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+}
+
+#loginBox h2,
+#adminPanel h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#fff;
+}
+
+#loginBox input,
+#adminPanel input,
+#adminPanel textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:12px;
+    border:none;
+    border-radius:10px;
+    background:#111b3d;
+    color:#fff;
+    font-size:14px;
+    outline:none;
+}
+
+#adminPanel textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+#loginBtn,
+#addGameBtn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    color:#fff;
+    background:linear-gradient(135deg,#4F7DF3,#6A63FF);
+}
+
+#loginBtn:hover,
+#addGameBtn:hover{
+    opacity:.9;
+}
+
+@media(max-width:480px){
+
+    #loginBox,
+    #adminPanel{
+        margin:15px auto;
+        padding:15px;
+    }
+
+    #loginBox h2,
+    #adminPanel h2{
+        font-size:22px;
+    }
+
+    #loginBox input,
+    #adminPanel input,
+    #adminPanel textarea,
+    #loginBtn,
+    #addGameBtn{
+        font-size:14px;
+    }
+}
