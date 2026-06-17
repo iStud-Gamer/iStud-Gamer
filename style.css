@@ -171,24 +171,31 @@ header h1{
     }
 }
 
-/* ================= DOWNLOADS ================= */
+/* ================= VERSION & DOWNLOADS ================= */
 
-.downloads{
-    display:inline-flex;
-    align-items:center;
+.game-meta{
+    display:flex;
     justify-content:center;
-    gap:6px;
-    padding:6px 12px;
+    align-items:center;
+    gap:8px;
+    margin:8px 0 12px;
+    flex-wrap:wrap;
+}
+
+.game-meta span{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    background:#111b3d;
+    padding:6px 10px;
+    border-radius:999px;
     font-size:12px;
     font-weight:600;
     color:#fff;
-    background:#111b3d;
-    border-radius:999px;
-    margin:8px auto;
 }
 
-.downloads i{
-    color:#4ade80;
+.game-meta i{
+    color:#4F7DF3;
 }
 
 /* ================= BUTTONS ================= */
