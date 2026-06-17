@@ -173,23 +173,34 @@ header h1{
 
 /* ================= VERSION & DOWNLOADS ================= */
 
+.game-card h3{
+    font-size:16px;
+    font-weight:700;
+    line-height:1.25;
+    margin-bottom:8px;
+    color:#fff;
+}
+
 .game-meta{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:8px;
+    gap:6px;
     margin:8px 0 12px;
-    flex-wrap:wrap;
+    flex-wrap:nowrap;
+    white-space:nowrap;
+    overflow:hidden;
 }
 
-.game-meta span{
+.game-meta .version,
+.game-meta .downloads-count{
     display:flex;
     align-items:center;
-    gap:5px;
+    gap:4px;
     background:#111b3d;
-    padding:6px 10px;
+    padding:4px 8px;
     border-radius:999px;
-    font-size:12px;
+    font-size:11px;
     font-weight:600;
     color:#fff;
 }
