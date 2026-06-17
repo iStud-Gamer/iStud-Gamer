@@ -35,12 +35,17 @@ async function loadGames() {
 
             <h3>${game.name}</h3>
 
-            <p>Version: ${game.version}</p>
+           <div class="game-meta">
+    <span>
+        <i class="fa-solid fa-code-branch"></i>
+        v${game.version}
+    </span>
 
-            <div class="downloads">
-                <i class="fa-solid fa-download"></i>
-                <span>${game.downloads || 0}</span>
-            </div>
+    <span>
+        <i class="fa-solid fa-download"></i>
+        ${game.downloads || 0}
+    </span>
+</div>
 
             <button class="btn mod-btn">
                 Mod Features
