@@ -30,22 +30,21 @@ async function loadGames() {
         card.className = "game-card";
 
         card.innerHTML = `
-
-<img src="${game.icon}" alt="${game.name}">
+            <img src="${game.icon}" alt="${game.name}">
 
             <h3>${game.name}</h3>
 
-           <div class="game-meta">
-    <span>
-        <i class="fa-solid fa-code-branch"></i>
-        v${game.version}
-    </span>
+            <div class="game-meta">
+                <span class="version">
+                    <i class="fa-solid fa-code-branch"></i>
+                    v${game.version}
+                </span>
 
-    <span>
-        <i class="fa-solid fa-download"></i>
-        ${game.downloads || 0}
-    </span>
-</div>
+                <span class="downloads-count">
+                    <i class="fa-solid fa-download"></i>
+                    <span>${game.downloads || 0}</span>
+                </span>
+            </div>
 
             <button class="btn mod-btn">
                 Mod Features
@@ -56,9 +55,7 @@ async function loadGames() {
             </button>
         `;
 
-        /* =========================
-           MOD FEATURES POPUP
-        ========================== */
+        /* MOD FEATURES POPUP */
         const modBtn = card.querySelector(".mod-btn");
 
         modBtn.addEventListener("click", () => {
@@ -76,9 +73,7 @@ async function loadGames() {
             popup.style.display = "block";
         });
 
-        /* =========================
-           DOWNLOAD COUNTER
-        ========================== */
+        /* DOWNLOAD COUNTER */
         const downloadBtn = card.querySelector(".download-btn");
 
         downloadBtn.addEventListener("click", async () => {
@@ -91,16 +86,14 @@ async function loadGames() {
                     downloads: increment(1)
                 });
 
-                // Update UI instantly while keeping icon
                 const downloadsSpan =
-                    card.querySelector(".downloads span");
+                    card.querySelector(".downloads-count span");
 
                 let current =
                     parseInt(downloadsSpan.textContent) || 0;
 
                 downloadsSpan.textContent = current + 1;
 
-                // Open download link
                 window.open(game.downloadLink, "_blank");
 
             } catch (error) {
@@ -110,7 +103,6 @@ async function loadGames() {
                     error
                 );
 
-                // Still open download link
                 window.open(game.downloadLink, "_blank");
             }
 
@@ -121,9 +113,7 @@ async function loadGames() {
     });
 }
 
-/* =========================
-   POPUP CLOSE LOGIC
-========================= */
+/* POPUP CLOSE LOGIC */
 closePopup.addEventListener("click", () => {
     popup.style.display = "none";
 });
@@ -134,7 +124,5 @@ window.addEventListener("click", (e) => {
     }
 });
 
-/* =========================
-   LOAD GAMES
-========================= */
+/* LOAD GAMES */
 loadGames();
