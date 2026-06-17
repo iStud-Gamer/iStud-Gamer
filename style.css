@@ -143,22 +143,7 @@ header h1{
     border-color:#4F7DF3;
 }
 
-/* UPDATED LABEL OVER ICON */
 
-.ribbon{
-    position:absolute;
-    top:18px;
-    left:50%;
-    transform:translateX(-50%);
-    background:#4F7DF3;
-    color:#fff;
-    font-size:10px;
-    font-weight:600;
-    padding:4px 10px;
-    border-radius:6px;
-    z-index:10;
-    box-shadow:0 2px 8px rgba(0,0,0,.3);
-}
 }
 
 /* GAME IMAGE */
@@ -169,7 +154,7 @@ header h1{
     object-fit:cover;
     border-radius:14px;
     display:block;
-    margin:22px auto 12px;
+    margin:12px auto;
     border:3px solid #4F7DF3;
 }
 
