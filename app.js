@@ -30,7 +30,6 @@ async function loadGames() {
         card.className = "game-card";
 
         card.innerHTML = `
-           <div class="ribbon">UPDATED</div>
 
 <img src="${game.icon}" alt="${game.name}">
 
