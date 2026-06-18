@@ -15,9 +15,7 @@ const closePopup = document.getElementById("closePopup");
 
 async function loadGames() {
 
-    const querySnapshot = await getDocs(
-        collection(db, "games")
-    );
+    const querySnapshot = await getDocs(collection(db, "games"));
 
     gamesContainer.innerHTML = "";
 
@@ -35,27 +33,27 @@ async function loadGames() {
             <h3>${game.name}</h3>
 
             <div class="game-meta">
+
                 <span class="version">
-                    <i class="fa-solid fa-code-branch"></i>
                     v${game.version}
                 </span>
 
                 <span class="downloads-count">
-                    <i class="fa-solid fa-download"></i>
-                    <span>${game.downloads || 0}</span>
+                    ${game.downloads || 0}
                 </span>
+
             </div>
 
             <button class="btn mod-btn">
-    <i class="fa-solid fa-crown"></i> Mod Features
-</button>
+                <i class="fa-solid fa-crown"></i> Mod Features
+            </button>
 
             <button class="btn download-btn">
                 Download
             </button>
         `;
 
-        /* MOD FEATURES POPUP */
+        /* ================= MOD FEATURES POPUP ================= */
         const modBtn = card.querySelector(".mod-btn");
 
         modBtn.addEventListener("click", () => {
@@ -73,7 +71,7 @@ async function loadGames() {
             popup.style.display = "block";
         });
 
-        /* DOWNLOAD COUNTER */
+        /* ================= DOWNLOAD COUNTER ================= */
         const downloadBtn = card.querySelector(".download-btn");
 
         downloadBtn.addEventListener("click", async () => {
@@ -87,7 +85,7 @@ async function loadGames() {
                 });
 
                 const downloadsSpan =
-                    card.querySelector(".downloads-count span");
+                    card.querySelector(".downloads-count");
 
                 let current =
                     parseInt(downloadsSpan.textContent) || 0;
@@ -98,10 +96,7 @@ async function loadGames() {
 
             } catch (error) {
 
-                console.error(
-                    "Download update failed:",
-                    error
-                );
+                console.error("Download update failed:", error);
 
                 window.open(game.downloadLink, "_blank");
             }
@@ -113,7 +108,7 @@ async function loadGames() {
     });
 }
 
-/* POPUP CLOSE LOGIC */
+/* ================= POPUP CLOSE LOGIC ================= */
 closePopup.addEventListener("click", () => {
     popup.style.display = "none";
 });
@@ -124,5 +119,5 @@ window.addEventListener("click", (e) => {
     }
 });
 
-/* LOAD GAMES */
+/* ================= LOAD GAMES ================= */
 loadGames();
