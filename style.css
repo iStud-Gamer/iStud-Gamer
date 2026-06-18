@@ -48,8 +48,6 @@ header h1 {
     box-shadow: 0 0 12px rgba(34, 158, 217, 0.6);
 }
 
-/* ================= YOUTUBE BUTTON ================= */
-
 .youtube-btn {
     background: linear-gradient(135deg, #ff3c3c, #ff7a18);
     color: white;
@@ -61,9 +59,27 @@ header h1 {
     align-items: center;
     gap: 8px;
     transition: 0.2s;
+
+    /* GLOW EFFECT */
+    box-shadow: 0 0 10px rgba(255, 80, 0, 0.4);
+    animation: ytGlowPulse 1.8s infinite;
 }
 
+/* hover */
 .youtube-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 12px rgba(255, 60, 60, 0.6);
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(255, 80, 0, 0.8);
+}
+
+/* glowing animation */
+@keyframes ytGlowPulse {
+    0% {
+        box-shadow: 0 0 6px rgba(255, 80, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 18px rgba(255, 80, 0, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 6px rgba(255, 80, 0, 0.3);
+    }
 }
