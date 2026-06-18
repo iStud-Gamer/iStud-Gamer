@@ -127,7 +127,9 @@ header h1{
     object-fit:cover;
     border-radius:14px;
     display:block;
-    margin:22px auto 12px;
+
+    /* FIXED spacing */
+    margin:12px auto;
 }
 
 /* ================= GAME NAME ================= */
