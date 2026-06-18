@@ -19,8 +19,12 @@ const loginBtn = document.getElementById("loginBtn");
 const addGameBtn = document.getElementById("addGameBtn");
 const gamesList = document.getElementById("gamesList");
 
+const iconFile = document.getElementById("iconFile");
+const iconPreview = document.getElementById("iconPreview");
+
 /* STATE */
 let editingGameId = null;
+let iconBase64 = "";
 
 /* LOGIN */
 loginBtn.addEventListener("click", async () => {
@@ -45,6 +49,23 @@ onAuthStateChanged(auth, (user) => {
         loadGames();
     }
 
+});
+
+/* IMAGE PREVIEW + BASE64 */
+iconFile.addEventListener("change", () => {
+
+    const file = iconFile.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+        iconBase64 = reader.result;
+        iconPreview.src = iconBase64;
+        iconPreview.style.display = "block";
+    };
+
+    reader.readAsDataURL(file);
 });
 
 /* LOAD GAMES */
@@ -77,10 +98,14 @@ async function loadGames() {
 
             document.getElementById("gameName").value = game.name;
             document.getElementById("version").value = game.version;
-            document.getElementById("icon").value = game.icon;
             document.getElementById("downloadLink").value = game.downloadLink;
+
             document.getElementById("features").value =
                 (game.modFeatures || []).join("\n");
+
+            iconBase64 = game.icon || "";
+            iconPreview.src = iconBase64;
+            iconPreview.style.display = iconBase64 ? "block" : "none";
 
             addGameBtn.textContent = "Update Game";
         });
@@ -104,7 +129,6 @@ addGameBtn.addEventListener("click", async () => {
 
     const name = document.getElementById("gameName").value;
     const version = document.getElementById("version").value;
-    const icon = document.getElementById("icon").value;
     const downloadLink = document.getElementById("downloadLink").value;
 
     const features = document.getElementById("features")
@@ -119,12 +143,12 @@ addGameBtn.addEventListener("click", async () => {
             await updateDoc(doc(db, "games", editingGameId), {
                 name,
                 version,
-                icon,
+                icon: iconBase64,
                 downloadLink,
                 modFeatures: features
             });
 
-            alert("Updated Successfully");
+            alert("Game Updated");
 
             editingGameId = null;
             addGameBtn.textContent = "Add Game";
@@ -134,20 +158,23 @@ addGameBtn.addEventListener("click", async () => {
             await addDoc(collection(db, "games"), {
                 name,
                 version,
-                icon,
+                icon: iconBase64,
                 downloadLink,
                 downloads: 0,
                 modFeatures: features
             });
 
-            alert("Game Added Successfully");
+            alert("Game Added");
         }
 
         document.getElementById("gameName").value = "";
         document.getElementById("version").value = "";
-        document.getElementById("icon").value = "";
         document.getElementById("downloadLink").value = "";
         document.getElementById("features").value = "";
+
+        iconFile.value = "";
+        iconPreview.style.display = "none";
+        iconBase64 = "";
 
         loadGames();
 
