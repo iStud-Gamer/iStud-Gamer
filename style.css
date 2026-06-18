@@ -23,7 +23,7 @@ body {
     border: none;
 }
 
-/* ADMIN PANEL */
+/* ADMIN */
 #adminPanel {
     max-width: 900px;
     margin: auto;
@@ -64,7 +64,7 @@ body {
     cursor: pointer;
 }
 
-/* GAME LIST */
+/* GAME CARD */
 .admin-game {
     background: #111827;
     padding: 12px;
