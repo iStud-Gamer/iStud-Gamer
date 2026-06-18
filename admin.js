@@ -2,7 +2,11 @@ import { db, auth } from "./firebase-config.js";
 
 import {
     collection,
-    addDoc
+    addDoc,
+    getDocs,
+    doc,
+    updateDoc,
+    deleteDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import {
