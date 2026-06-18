@@ -14,18 +14,15 @@ import {
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-/* ================= ELEMENTS ================= */
-
+/* ELEMENTS */
 const loginBtn = document.getElementById("loginBtn");
 const addGameBtn = document.getElementById("addGameBtn");
 const gamesList = document.getElementById("gamesList");
 
-/* ================= STATE ================= */
-
+/* STATE */
 let editingGameId = null;
 
-/* ================= LOGIN ================= */
-
+/* LOGIN */
 loginBtn.addEventListener("click", async () => {
 
     const email = document.getElementById("email").value;
@@ -33,28 +30,24 @@ loginBtn.addEventListener("click", async () => {
 
     try {
         await signInWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-        console.error(error);
+    } catch (err) {
         alert("Login Failed");
     }
 
 });
 
-/* ================= AUTH STATE ================= */
-
+/* AUTH */
 onAuthStateChanged(auth, (user) => {
 
     if (user) {
         document.getElementById("loginBox").style.display = "none";
         document.getElementById("adminPanel").style.display = "block";
-
         loadGames();
     }
 
 });
 
-/* ================= LOAD GAMES ================= */
-
+/* LOAD GAMES */
 async function loadGames() {
 
     const snapshot = await getDocs(collection(db, "games"));
@@ -69,60 +62,47 @@ async function loadGames() {
         div.className = "admin-game";
 
         div.innerHTML = `
-    <div class="game-info">
-        <h3>${game.name}</h3>
+            <h3>${game.name}</h3>
 
-        <p class="game-meta">
-            Version: ${game.version}
-        </p>
-    </div>
+            <div>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+            </div>
+        `;
 
-    <div class="admin-actions">
-        <button class="edit-btn">✏️ Edit</button>
-        <button class="delete-btn">🗑 Delete</button>
-    </div>
-`;
-
-        /* ================= EDIT ================= */
-
+        /* EDIT */
         div.querySelector(".edit-btn").addEventListener("click", () => {
 
             editingGameId = gameDoc.id;
 
-            document.getElementById("gameName").value = game.name || "";
-            document.getElementById("version").value = game.version || "";
-            document.getElementById("icon").value = game.icon || "";
-            document.getElementById("downloadLink").value = game.downloadLink || "";
-
+            document.getElementById("gameName").value = game.name;
+            document.getElementById("version").value = game.version;
+            document.getElementById("icon").value = game.icon;
+            document.getElementById("downloadLink").value = game.downloadLink;
             document.getElementById("features").value =
                 (game.modFeatures || []).join("\n");
 
             addGameBtn.textContent = "Update Game";
-
         });
 
-        /* ================= DELETE ================= */
-
+        /* DELETE */
         div.querySelector(".delete-btn").addEventListener("click", async () => {
 
-            if (!confirm(`Delete ${game.name}?`)) return;
+            if (!confirm("Delete " + game.name + "?")) return;
 
             await deleteDoc(doc(db, "games", gameDoc.id));
 
             loadGames();
-
         });
 
         gamesList.appendChild(div);
-
     });
 }
 
-/* ================= ADD / UPDATE GAME ================= */
-
+/* ADD / UPDATE GAME */
 addGameBtn.addEventListener("click", async () => {
 
-    const gameName = document.getElementById("gameName").value;
+    const name = document.getElementById("gameName").value;
     const version = document.getElementById("version").value;
     const icon = document.getElementById("icon").value;
     const downloadLink = document.getElementById("downloadLink").value;
@@ -134,40 +114,34 @@ addGameBtn.addEventListener("click", async () => {
 
     try {
 
-        /* ========== UPDATE MODE ========== */
         if (editingGameId) {
 
             await updateDoc(doc(db, "games", editingGameId), {
-                name: gameName,
-                version: version,
-                icon: icon,
-                downloadLink: downloadLink,
+                name,
+                version,
+                icon,
+                downloadLink,
                 modFeatures: features
             });
 
-            alert("Game Updated Successfully");
+            alert("Updated Successfully");
 
             editingGameId = null;
             addGameBtn.textContent = "Add Game";
 
-        }
-
-        /* ========== ADD MODE ========== */
-        else {
+        } else {
 
             await addDoc(collection(db, "games"), {
-                name: gameName,
-                version: version,
+                name,
+                version,
+                icon,
+                downloadLink,
                 downloads: 0,
-                icon: icon,
-                downloadLink: downloadLink,
                 modFeatures: features
             });
 
             alert("Game Added Successfully");
         }
-
-        /* RESET FORM */
 
         document.getElementById("gameName").value = "";
         document.getElementById("version").value = "";
@@ -177,9 +151,8 @@ addGameBtn.addEventListener("click", async () => {
 
         loadGames();
 
-    } catch (error) {
-        console.error(error);
-        alert("Operation Failed");
+    } catch (err) {
+        alert("Error Occurred");
     }
 
 });
