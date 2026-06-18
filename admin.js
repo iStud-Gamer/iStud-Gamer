@@ -19,6 +19,10 @@ const loginBtn =
 
 const addGameBtn =
     document.getElementById("addGameBtn");
+let editingGameId = null;
+
+const gamesList =
+    document.getElementById("gamesList");
 
 loginBtn.addEventListener("click", async () => {
 
