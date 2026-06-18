@@ -63,7 +63,39 @@ onAuthStateChanged(auth, (user) => {
     }
 
 });
+async function loadGames() {
 
+    const snapshot =
+        await getDocs(collection(db, "games"));
+
+    gamesList.innerHTML = "";
+
+    snapshot.forEach((gameDoc) => {
+
+        const game = gameDoc.data();
+
+        const div =
+            document.createElement("div");
+
+        div.className = "admin-game";
+
+        div.innerHTML = `
+            <h3>${game.name}</h3>
+
+            <button class="edit-btn">
+                Edit
+            </button>
+
+            <button class="delete-btn">
+                Delete
+            </button>
+        `;
+
+        gamesList.appendChild(div);
+
+    });
+
+}
 addGameBtn.addEventListener("click", async () => {
 
     const gameName =
