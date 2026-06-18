@@ -1,178 +1,69 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #050B1F;
-    margin: 0;
-    padding: 12px;
-    color: white;
-}
-
 /* ================= HEADER ================= */
 
 header {
     text-align: center;
-    margin-bottom: 20px;
+    padding: 10px 0;
 }
 
 header h1 {
     font-size: 32px;
-    margin: 0;
-    color: #ffffff;
+    margin-bottom: 10px;
 }
 
-/* ================= GAME GRID ================= */
+.logo-white {
+    color: white;
+}
 
-#gamesContainer {
+.logo-blue {
+    color: #3b82f6;
+}
+
+/* ================= TOP BUTTONS ================= */
+
+.top-buttons {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
     gap: 12px;
-    justify-content: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 
-/* ================= GAME CARD ================= */
+/* ================= TELEGRAM BUTTON ================= */
 
-.game-card {
-    background: #111827;
-    width: 180px;
-    border-radius: 12px;
-    overflow: hidden;
-    padding: 10px;
-    transition: 0.2s;
-}
-
-.game-card:hover {
-    transform: scale(1.03);
-}
-
-.game-card img {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.game-card h3 {
-    font-size: 16px;
-    margin: 8px 0;
-}
-
-/* ================= META INFO ================= */
-
-.game-meta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: #9ca3af;
-    margin-bottom: 8px;
-}
-
-.version i,
-.downloads-count i {
-    margin-right: 4px;
-}
-
-/* ================= BUTTONS ================= */
-
-.btn {
-    width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 6px;
-    font-weight: bold;
-}
-
-.mod-btn {
-    background: #3b82f6;
-    color: white;
-}
-
-.mod-btn:hover {
-    background: #2563eb;
-}
-
-.download-btn {
-    background: #22c55e;
-    color: white;
-}
-
-.download-btn:hover {
-    background: #16a34a;
-}
-
-/* ================= POPUP ================= */
-
-#popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-}
-
-#popupContent {
-    background: #111827;
-    width: 300px;
-    margin: 100px auto;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-#featuresList {
-    padding-left: 20px;
-}
-
-#closePopup {
-    float: right;
-    cursor: pointer;
-    font-size: 18px;
-}
-/* ================= OLD SPECIAL BUTTONS ================= */
-
-/* HOW TO DOWNLOAD BUTTON */
-.how-download-btn {
-    background: linear-gradient(135deg, #ff6a00, #ff3c3c);
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    width: 100%;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 8px;
-    transition: 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.how-download-btn:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 10px rgba(255, 60, 60, 0.5);
-}
-
-/* JOIN TELEGRAM BUTTON */
 .telegram-btn {
     background: linear-gradient(135deg, #229ED9, #0077ff);
     color: white;
-    padding: 10px;
-    border: none;
+    padding: 10px 14px;
     border-radius: 10px;
-    width: 100%;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 8px;
-    transition: 0.2s;
+    text-decoration: none;
+    font-weight: 600;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 8px;
+    transition: 0.2s;
 }
 
 .telegram-btn:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 10px rgba(34, 158, 217, 0.5);
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(34, 158, 217, 0.6);
+}
+
+/* ================= YOUTUBE BUTTON ================= */
+
+.youtube-btn {
+    background: linear-gradient(135deg, #ff3c3c, #ff7a18);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+
+.youtube-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(255, 60, 60, 0.6);
 }
