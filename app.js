@@ -19,7 +19,12 @@ const closePopup = document.getElementById("closePopup");
 
 async function loadGames() {
 
-    const q = collection(db, "games");
+    import { query, orderBy } from "firebase/firestore";
+
+const q = query(
+    collection(db, "games"),
+    orderBy("createdAt", "desc")
+);
 
     // ❌ FIX: only ONE querySnapshot
     const querySnapshot = await getDocs(q);
