@@ -1,5 +1,5 @@
 body {
-    font-family: Arial;
+    font-family: 'Poppins', sans-serif;
     background: #0b1220;
     color: white;
     margin: 0;
@@ -23,7 +23,7 @@ body {
     border: none;
 }
 
-/* ADMIN PANEL */
+/* ADMIN */
 #adminPanel {
     max-width: 900px;
     margin: auto;
@@ -98,12 +98,4 @@ body {
     color: white;
     border-radius: 5px;
     cursor: pointer;
-}
-
-/* IMAGE PREVIEW */
-#iconPreview {
-    width: 80px;
-    margin-top: 10px;
-    display: none;
-    border-radius: 6px;
 }
