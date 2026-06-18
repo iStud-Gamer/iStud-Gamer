@@ -54,13 +54,15 @@ onAuthStateChanged(auth, (user) => {
 
     if (user) {
 
-        document.getElementById("loginBox")
-            .style.display = "none";
+    document.getElementById("loginBox")
+        .style.display = "none";
 
-        document.getElementById("adminPanel")
-            .style.display = "block";
+    document.getElementById("adminPanel")
+        .style.display = "block";
 
-    }
+    loadGames();
+
+}
 
 });
 async function loadGames() {
