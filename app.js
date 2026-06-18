@@ -39,6 +39,7 @@ async function loadGames() {
                 </span>
 
                 <span class="downloads-count">
+                    <i class="fa-solid fa-download download-icon"></i>
                     ${game.downloads || 0}
                 </span>
 
@@ -90,7 +91,10 @@ async function loadGames() {
                 let current =
                     parseInt(downloadsSpan.textContent) || 0;
 
-                downloadsSpan.textContent = current + 1;
+                downloadsSpan.innerHTML = `
+                    <i class="fa-solid fa-download download-icon"></i>
+                    ${current + 1}
+                `;
 
                 window.open(game.downloadLink, "_blank");
 
