@@ -68,19 +68,26 @@ header h1{
     transition:.3s;
 }
 
-.top-buttons a:hover{
-    transform:translateY(-3px);
-}
-
+/* Telegram */
 .telegram-btn{
     background:linear-gradient(135deg,#4F7DF3,#6A63FF);
 }
 
-.youtube-btn{
-    animation: blinkBtn 1.2s infinite;
+.telegram-btn:hover{
+    transform:translateY(-3px);
 }
 
-/* blinking effect */
+/* ================= BLINKING YOUTUBE BUTTON ================= */
+
+.youtube-btn{
+    background:linear-gradient(135deg,#ff3b3b,#ff0000);
+    animation:blinkBtn 1.2s infinite;
+}
+
+.youtube-btn:hover{
+    transform:scale(1.05);
+}
+
 @keyframes blinkBtn{
     0%{
         opacity:1;
@@ -138,7 +145,7 @@ header h1{
     border-color:#4F7DF3;
 }
 
-/* ================= GAME IMAGE (NO BORDER) ================= */
+/* ================= GAME IMAGE ================= */
 
 .game-card img{
     width:140px;
@@ -146,9 +153,7 @@ header h1{
     object-fit:cover;
     border-radius:14px;
     display:block;
-
-    /* minimized spacing */
-    margin:4px auto 4px;
+    margin:4px auto;
 }
 
 /* ================= GAME NAME ================= */
@@ -160,7 +165,7 @@ header h1{
     color:#fff;
 }
 
-/* ================= META (VERSION + DOWNLOADS) ================= */
+/* ================= META ================= */
 
 .game-meta{
     display:flex;
