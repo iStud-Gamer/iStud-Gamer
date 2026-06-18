@@ -5,17 +5,28 @@ import {
     getDocs,
     doc,
     updateDoc,
-    increment
+    increment,
+    query,
+    orderBy
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* ================= ELEMENTS ================= */
 
 const gamesContainer = document.getElementById("gamesContainer");
 const popup = document.getElementById("popup");
 const featuresList = document.getElementById("featuresList");
 const closePopup = document.getElementById("closePopup");
 
+/* ================= LOAD GAMES ================= */
+
 async function loadGames() {
 
-    const querySnapshot = await getDocs(collection(db, "games"));
+    const q = query(
+        collection(db, "games"),
+        orderBy("createdAt", "desc")   // 🔥 NEW FIRST
+    );
+
+    const querySnapshot = await getDocs(q);
 
     gamesContainer.innerHTML = "";
 
@@ -54,7 +65,8 @@ async function loadGames() {
             </button>
         `;
 
-        /* ================= MOD FEATURES POPUP ================= */
+        /* ================= MOD FEATURES ================= */
+
         const modBtn = card.querySelector(".mod-btn");
 
         modBtn.addEventListener("click", () => {
@@ -73,6 +85,7 @@ async function loadGames() {
         });
 
         /* ================= DOWNLOAD COUNTER ================= */
+
         const downloadBtn = card.querySelector(".download-btn");
 
         downloadBtn.addEventListener("click", async () => {
@@ -112,7 +125,8 @@ async function loadGames() {
     });
 }
 
-/* ================= POPUP CLOSE LOGIC ================= */
+/* ================= POPUP CLOSE ================= */
+
 closePopup.addEventListener("click", () => {
     popup.style.display = "none";
 });
@@ -123,5 +137,6 @@ window.addEventListener("click", (e) => {
     }
 });
 
-/* ================= LOAD GAMES ================= */
+/* ================= INIT ================= */
+
 loadGames();
