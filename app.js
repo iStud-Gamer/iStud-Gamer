@@ -5,9 +5,7 @@ import {
     getDocs,
     doc,
     updateDoc,
-    increment,
-    query,
-    orderBy
+    increment
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 /* ================= ELEMENTS ================= */
@@ -22,8 +20,8 @@ const closePopup = document.getElementById("closePopup");
 async function loadGames() {
 
     const q = collection(db, "games");
-const querySnapshot = await getDocs(q);
 
+    // ❌ FIX: only ONE querySnapshot
     const querySnapshot = await getDocs(q);
 
     gamesContainer.innerHTML = "";
