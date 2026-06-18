@@ -51,7 +51,7 @@ onAuthStateChanged(auth, (user) => {
 
 });
 
-/* IMAGE PREVIEW + BASE64 */
+/* IMAGE PREVIEW */
 iconFile.addEventListener("change", () => {
 
     const file = iconFile.files[0];
