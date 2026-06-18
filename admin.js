@@ -14,61 +14,50 @@ import {
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-const loginBtn =
-    document.getElementById("loginBtn");
+/* ================= ELEMENTS ================= */
 
-const addGameBtn =
-    document.getElementById("addGameBtn");
+const loginBtn = document.getElementById("loginBtn");
+const addGameBtn = document.getElementById("addGameBtn");
+const gamesList = document.getElementById("gamesList");
+
+/* ================= STATE ================= */
+
 let editingGameId = null;
 
-const gamesList =
-    document.getElementById("gamesList");
+/* ================= LOGIN ================= */
 
 loginBtn.addEventListener("click", async () => {
 
-    const email =
-        document.getElementById("email").value;
-
-    const password =
-        document.getElementById("password").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
     try {
-
-        await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-        );
-
+        await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
-
         console.error(error);
-
         alert("Login Failed");
-
     }
 
 });
 
+/* ================= AUTH STATE ================= */
+
 onAuthStateChanged(auth, (user) => {
 
     if (user) {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("adminPanel").style.display = "block";
 
-    document.getElementById("loginBox")
-        .style.display = "none";
-
-    document.getElementById("adminPanel")
-        .style.display = "block";
-
-    loadGames();
-
-}
+        loadGames();
+    }
 
 });
+
+/* ================= LOAD GAMES ================= */
+
 async function loadGames() {
 
-    const snapshot =
-        await getDocs(collection(db, "games"));
+    const snapshot = await getDocs(collection(db, "games"));
 
     gamesList.innerHTML = "";
 
@@ -76,63 +65,101 @@ async function loadGames() {
 
         const game = gameDoc.data();
 
-        const div =
-            document.createElement("div");
-
+        const div = document.createElement("div");
         div.className = "admin-game";
 
         div.innerHTML = `
             <h3>${game.name}</h3>
 
-            <button class="edit-btn">
-                Edit
-            </button>
-
-            <button class="delete-btn">
-                Delete
-            </button>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
         `;
+
+        /* ================= EDIT ================= */
+
+        div.querySelector(".edit-btn").addEventListener("click", () => {
+
+            editingGameId = gameDoc.id;
+
+            document.getElementById("gameName").value = game.name || "";
+            document.getElementById("version").value = game.version || "";
+            document.getElementById("icon").value = game.icon || "";
+            document.getElementById("downloadLink").value = game.downloadLink || "";
+
+            document.getElementById("features").value =
+                (game.modFeatures || []).join("\n");
+
+            addGameBtn.textContent = "Update Game";
+
+        });
+
+        /* ================= DELETE ================= */
+
+        div.querySelector(".delete-btn").addEventListener("click", async () => {
+
+            if (!confirm(`Delete ${game.name}?`)) return;
+
+            await deleteDoc(doc(db, "games", gameDoc.id));
+
+            loadGames();
+
+        });
 
         gamesList.appendChild(div);
 
     });
-
 }
+
+/* ================= ADD / UPDATE GAME ================= */
+
 addGameBtn.addEventListener("click", async () => {
 
-    const gameName =
-        document.getElementById("gameName").value;
+    const gameName = document.getElementById("gameName").value;
+    const version = document.getElementById("version").value;
+    const icon = document.getElementById("icon").value;
+    const downloadLink = document.getElementById("downloadLink").value;
 
-    const version =
-        document.getElementById("version").value;
-
-    const icon =
-        document.getElementById("icon").value;
-
-    const downloadLink =
-        document.getElementById("downloadLink").value;
-
-    const features =
-        document.getElementById("features")
-            .value
-            .split("\n")
-            .filter(f => f.trim() !== "");
+    const features = document.getElementById("features")
+        .value
+        .split("\n")
+        .filter(f => f.trim() !== "");
 
     try {
 
-        await addDoc(
-            collection(db, "games"),
-            {
+        /* ========== UPDATE MODE ========== */
+        if (editingGameId) {
+
+            await updateDoc(doc(db, "games", editingGameId), {
                 name: gameName,
                 version: version,
-                downloads: "0",
                 icon: icon,
                 downloadLink: downloadLink,
                 modFeatures: features
-            }
-        );
+            });
 
-        alert("Game Added Successfully");
+            alert("Game Updated Successfully");
+
+            editingGameId = null;
+            addGameBtn.textContent = "Add Game";
+
+        }
+
+        /* ========== ADD MODE ========== */
+        else {
+
+            await addDoc(collection(db, "games"), {
+                name: gameName,
+                version: version,
+                downloads: 0,
+                icon: icon,
+                downloadLink: downloadLink,
+                modFeatures: features
+            });
+
+            alert("Game Added Successfully");
+        }
+
+        /* RESET FORM */
 
         document.getElementById("gameName").value = "";
         document.getElementById("version").value = "";
@@ -140,12 +167,11 @@ addGameBtn.addEventListener("click", async () => {
         document.getElementById("downloadLink").value = "";
         document.getElementById("features").value = "";
 
+        loadGames();
+
     } catch (error) {
-
         console.error(error);
-
-        alert("Error Adding Game");
-
+        alert("Operation Failed");
     }
 
 });
