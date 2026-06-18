@@ -119,10 +119,7 @@ header h1{
     border-color:#4F7DF3;
 }
 
-/* ================= REMOVED BROKEN RIBBON ================= */
-/* (Fix: removed duplicate bracket + unstable overlay system) */
-
-/* GAME IMAGE */
+/* ================= GAME IMAGE (NO BORDER) ================= */
 
 .game-card img{
     width:140px;
@@ -131,42 +128,39 @@ header h1{
     border-radius:14px;
     display:block;
     margin:22px auto 12px;
-    border:3px solid #4F7DF3;
 }
+
+/* ================= GAME NAME ================= */
 
 .game-card h3{
     font-size:16px;
     font-weight:700;
-    line-height:1.25;
     margin-bottom:8px;
     color:#fff;
 }
 
-.game-card p{
-    font-size:13px;
-    color:#9ca3af;
-    line-height:1.4;
-    margin-bottom:10px;
-}
+/* ================= META (VERSION + DOWNLOADS) ================= */
 
-/* ================= DOWNLOADS ================= */
-
-.downloads{
-    display:inline-flex;
+.game-meta{
+    display:flex;
+    justify-content:space-between;
     align-items:center;
-    justify-content:center;
-    gap:6px;
-    padding:6px 12px;
-    font-size:12px;
-    font-weight:600;
-    color:#fff;
-    background:#111b3d;
-    border-radius:999px;
-    margin:8px auto;
+    font-size:11px;
+    margin:8px 0;
+    padding:6px 10px;
+    border-radius:10px;
+    background:linear-gradient(135deg,#1b2a52,#111b3d);
+    box-shadow:0 0 10px rgba(79,125,243,0.15);
 }
 
-.downloads i{
+.version{
+    color:#4F7DF3;
+    font-weight:600;
+}
+
+.downloads-count{
     color:#4ade80;
+    font-weight:600;
 }
 
 /* ================= BUTTONS ================= */
