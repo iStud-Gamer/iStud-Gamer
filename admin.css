@@ -1,4 +1,4 @@
-{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #050B1F; /* same as your main theme */
+    background: #050B1F;
     color: #fff;
     padding: 20px;
 }
@@ -14,19 +14,18 @@ body {
 /* ================= LOGIN ================= */
 
 #loginBox {
-    max-width: 320px;
+    max-width: 340px;
     margin: 120px auto;
     background: #0D1328;
-    padding: 22px;
-    border-radius: 14px;
+    padding: 25px;
+    border-radius: 16px;
     border: 1px solid rgba(79,125,243,.25);
-    box-shadow: 0 8px 20px rgba(0,0,0,.4);
+    box-shadow: 0 10px 25px rgba(0,0,0,.5);
 }
 
 #loginBox h2 {
     text-align: center;
     margin-bottom: 15px;
-    color: #fff;
 }
 
 #loginBox input {
@@ -40,7 +39,6 @@ body {
     outline: none;
 }
 
-/* LOGIN BUTTON */
 #loginBtn {
     width: 100%;
     margin-top: 10px;
@@ -65,12 +63,6 @@ body {
     margin: auto;
 }
 
-/* TITLE */
-#adminPanel h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
 /* ================= FORM ================= */
 
 .form-card {
@@ -80,10 +72,6 @@ body {
     margin-bottom: 20px;
     border: 1px solid rgba(79,125,243,.2);
     box-shadow: 0 8px 20px rgba(0,0,0,.35);
-}
-
-.form-card h2 {
-    margin-bottom: 10px;
 }
 
 .form-card input,
@@ -101,8 +89,6 @@ body {
 .form-card textarea {
     height: 120px;
 }
-
-/* ================= ADD BUTTON ================= */
 
 #addGameBtn {
     width: 100%;
@@ -126,9 +112,8 @@ body {
     background: #0D1328;
     padding: 14px;
     margin: 10px 0;
-    border-radius: 12px;
+    border-radius: 14px;
     border: 1px solid rgba(79,125,243,.15);
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -136,7 +121,6 @@ body {
 }
 
 .admin-game h3 {
-    margin: 0;
     font-size: 16px;
 }
 
@@ -174,72 +158,9 @@ body {
 /* ================= IMAGE PREVIEW ================= */
 
 #iconPreview {
-    width: 80px;
+    width: 90px;
     margin-top: 10px;
-    border-radius: 8px;
+    border-radius: 10px;
     display: block;
-}    margin-bottom: 20px;
-}
-
-.form-card input,
-.form-card textarea {
-    width: 100%;
-    margin: 8px 0;
-    padding: 10px;
-    border-radius: 6px;
-    border: none;
-    background: #1f2937;
-    color: white;
-}
-
-.form-card textarea {
-    height: 120px;
-}
-
-/* BUTTON */
-#addGameBtn {
-    width: 100%;
-    padding: 10px;
-    background: #22c55e;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* GAME CARD */
-.admin-game {
-    background: #111827;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.admin-game h3 {
-    margin: 0;
-}
-
-/* BUTTONS */
-.edit-btn {
-    background: #3b82f6;
-    border: none;
-    padding: 6px 10px;
-    color: white;
-    border-radius: 5px;
-    margin-right: 5px;
-    cursor: pointer;
-}
-
-.delete-btn {
-    background: #ef4444;
-    border: none;
-    padding: 6px 10px;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
+    border: 2px solid rgba(79,125,243,.3);
 }
