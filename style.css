@@ -1,101 +1,230 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#050B1F;
+    padding:12px;
+    color:#fff;
+    min-height:100vh;
+}
+
 /* ================= HEADER ================= */
 
-header {
-    text-align: center;
-    padding: 10px 0;
+header{
+    text-align:center;
+    margin-bottom:20px;
+    padding:10px 0;
 }
 
-header h1 {
-    font-size: 32px;
-    margin-bottom: 10px;
+header h1{
+    font-size:48px;
+    font-weight:700;
+    line-height:1;
+    margin-bottom:15px;
 }
 
-.logo-white {
-    color: white;
+.logo-white{
+    color:#fff;
 }
 
-.logo-blue {
-    color: #3b82f6;
+.logo-blue{
+    color:#5B8CFF;
+}
+
+@media(max-width:768px){
+    header h1{
+        font-size:38px;
+    }
+}
+
+@media(max-width:480px){
+    header h1{
+        font-size:30px;
+    }
 }
 
 /* ================= TOP BUTTONS ================= */
 
-.top-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
+.top-buttons{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
 }
 
-/* ================= TELEGRAM BUTTON ================= */
-
-.telegram-btn {
-    background: linear-gradient(135deg, #229ED9, #0077ff);
-    color: white;
-    padding: 10px 14px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: 0.2s;
+.top-buttons a{
+    width:90%;
+    max-width:260px;
+    text-align:center;
+    text-decoration:none;
+    padding:12px;
+    border-radius:12px;
+    font-weight:600;
+    color:#fff;
+    transition:.3s;
 }
 
-.telegram-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 12px rgba(34, 158, 217, 0.6);
+.top-buttons a:hover{
+    transform:translateY(-3px);
 }
 
-.youtube-btn {
-    background: linear-gradient(135deg, #ff3c3c, #ff7a18);
-    color: white;
-    padding: 10px 14px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: 0.2s;
-
-    /* GLOW EFFECT */
-    box-shadow: 0 0 10px rgba(255, 80, 0, 0.4);
-    animation: ytGlowPulse 1.8s infinite;
+.telegram-btn{
+    background:linear-gradient(135deg,#4F7DF3,#6A63FF);
 }
 
-/* hover */
-.youtube-btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 20px rgba(255, 80, 0, 0.8);
+.youtube-btn{
+    background:linear-gradient(135deg,#ff3b3b,#ff0000);
 }
 
-/* glowing animation */
-@keyframes ytGlowPulse {
-    0% {
-        box-shadow: 0 0 6px rgba(255, 80, 0, 0.3);
-    }
-    50% {
-        box-shadow: 0 0 18px rgba(255, 80, 0, 0.8);
-    }
-    100% {
-        box-shadow: 0 0 6px rgba(255, 80, 0, 0.3);
+/* ================= GRID ================= */
+
+.games-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+@media(min-width:768px){
+    .games-grid{
+        grid-template-columns:repeat(3,1fr);
     }
 }
-/* ================= MOBILE RESPONSIVE ================= */
 
-@media (max-width: 600px) {
-
-    #gamesContainer {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 👈 2 cards per row */
-        gap: 10px;
-        padding: 10px;
+@media(min-width:1100px){
+    .games-grid{
+        grid-template-columns:repeat(4,1fr);
     }
+}
 
-    .game-card {
-        width: 100%;   /* important */
-        margin: 0;
-    }
+/* ================= GAME CARD ================= */
+
+.game-card{
+    background:#0D1328;
+    border-radius:16px;
+    padding:12px;
+    text-align:center;
+    border:1px solid rgba(79,125,243,.15);
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+    position:relative;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.game-card:hover{
+    transform:translateY(-5px);
+    border-color:#4F7DF3;
+}
+
+/* ================= REMOVED BROKEN RIBBON ================= */
+/* (Fix: removed duplicate bracket + unstable overlay system) */
+
+/* GAME IMAGE */
+
+.game-card img{
+    width:140px;
+    height:140px;
+    object-fit:cover;
+    border-radius:14px;
+    display:block;
+    margin:22px auto 12px;
+    border:3px solid #4F7DF3;
+}
+
+.game-card h3{
+    font-size:16px;
+    font-weight:700;
+    line-height:1.25;
+    margin-bottom:8px;
+    color:#fff;
+}
+
+.game-card p{
+    font-size:13px;
+    color:#9ca3af;
+    line-height:1.4;
+    margin-bottom:10px;
+}
+
+/* ================= DOWNLOADS ================= */
+
+.downloads{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    padding:6px 12px;
+    font-size:12px;
+    font-weight:600;
+    color:#fff;
+    background:#111b3d;
+    border-radius:999px;
+    margin:8px auto;
+}
+
+.downloads i{
+    color:#4ade80;
+}
+
+/* ================= BUTTONS ================= */
+
+.btn{
+    display:block;
+    width:100%;
+    margin-top:8px;
+    padding:11px;
+    border:none;
+    border-radius:10px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:scale(1.03);
+}
+
+.mod-btn{
+    background:linear-gradient(135deg,#fbbf24,#f59e0b);
+    color:#111;
+}
+
+.download-btn{
+    background:linear-gradient(135deg,#4F7DF3,#6A63FF);
+    color:#fff;
+}
+
+/* ================= POPUP ================= */
+
+.popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(4px);
+}
+
+.popup-content{
+    background:#0D1328;
+    color:#fff;
+    width:90%;
+    max-width:380px;
+    margin:120px auto;
+    padding:20px;
+    border-radius:16px;
+    border:1px solid rgba(79,125,243,.25);
+}
+
+#closePopup{
+    float:right;
+    font-size:22px;
+    cursor:pointer;
+    color:#fff;
 }
