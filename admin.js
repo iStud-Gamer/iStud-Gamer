@@ -69,11 +69,19 @@ async function loadGames() {
         div.className = "admin-game";
 
         div.innerHTML = `
-            <h3>${game.name}</h3>
+    <div class="game-info">
+        <h3>${game.name}</h3>
 
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn">Delete</button>
-        `;
+        <p class="game-meta">
+            Version: ${game.version}
+        </p>
+    </div>
+
+    <div class="admin-actions">
+        <button class="edit-btn">✏️ Edit</button>
+        <button class="delete-btn">🗑 Delete</button>
+    </div>
+`;
 
         /* ================= EDIT ================= */
 
