@@ -21,10 +21,8 @@ const closePopup = document.getElementById("closePopup");
 
 async function loadGames() {
 
-    const q = query(
-        collection(db, "games"),
-        orderBy("createdAt", "desc")   // 🔥 NEW FIRST
-    );
+    const q = collection(db, "games");
+const querySnapshot = await getDocs(q);
 
     const querySnapshot = await getDocs(q);
 
