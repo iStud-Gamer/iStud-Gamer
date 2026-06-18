@@ -1,0 +1,109 @@
+body {
+    font-family: Arial;
+    background: #0b1220;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+/* LOGIN */
+#loginBox {
+    max-width: 300px;
+    margin: 100px auto;
+    background: #111827;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#loginBox input {
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+}
+
+/* ADMIN PANEL */
+#adminPanel {
+    max-width: 900px;
+    margin: auto;
+}
+
+/* FORM */
+.form-card {
+    background: #111827;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.form-card input,
+.form-card textarea {
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    background: #1f2937;
+    color: white;
+}
+
+.form-card textarea {
+    height: 120px;
+}
+
+/* BUTTON */
+#addGameBtn {
+    width: 100%;
+    padding: 10px;
+    background: #22c55e;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* GAME CARD */
+.admin-game {
+    background: #111827;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-game h3 {
+    margin: 0;
+}
+
+/* BUTTONS */
+.edit-btn {
+    background: #3b82f6;
+    border: none;
+    padding: 6px 10px;
+    color: white;
+    border-radius: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background: #ef4444;
+    border: none;
+    padding: 6px 10px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* IMAGE PREVIEW */
+#iconPreview {
+    width: 80px;
+    margin-top: 10px;
+    display: none;
+    border-radius: 6px;
+}
