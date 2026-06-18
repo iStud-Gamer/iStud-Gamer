@@ -129,3 +129,50 @@ header h1 {
     cursor: pointer;
     font-size: 18px;
 }
+/* ================= OLD SPECIAL BUTTONS ================= */
+
+/* HOW TO DOWNLOAD BUTTON */
+.how-download-btn {
+    background: linear-gradient(135deg, #ff6a00, #ff3c3c);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.how-download-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 10px rgba(255, 60, 60, 0.5);
+}
+
+/* JOIN TELEGRAM BUTTON */
+.telegram-btn {
+    background: linear-gradient(135deg, #229ED9, #0077ff);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.telegram-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 10px rgba(34, 158, 217, 0.5);
+}
