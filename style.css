@@ -336,3 +336,49 @@ header h1{
         font-size:14px;
     }
 }
+.admin-game {
+    background: #111827;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.admin-game h3 {
+    font-size: 16px;
+    margin: 0;
+    flex: 1;
+}
+
+/* Base button style */
+.admin-game button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+/* EDIT BUTTON */
+.edit-btn {
+    background: #3b82f6;
+    color: white;
+}
+
+.edit-btn:hover {
+    background: #2563eb;
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+    background: #ef4444;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #dc2626;
+}
