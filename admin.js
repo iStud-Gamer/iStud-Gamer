@@ -6,7 +6,9 @@ import {
     getDocs,
     doc,
     updateDoc,
-    deleteDoc
+    deleteDoc,
+    query,
+    orderBy
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import {
@@ -14,7 +16,8 @@ import {
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-/* ELEMENTS */
+/* ================= ELEMENTS ================= */
+
 const loginBtn = document.getElementById("loginBtn");
 const addGameBtn = document.getElementById("addGameBtn");
 const gamesList = document.getElementById("gamesList");
@@ -22,11 +25,13 @@ const gamesList = document.getElementById("gamesList");
 const iconFile = document.getElementById("iconFile");
 const iconPreview = document.getElementById("iconPreview");
 
-/* STATE */
+/* ================= STATE ================= */
+
 let editingGameId = null;
 let iconBase64 = "";
 
-/* LOGIN */
+/* ================= LOGIN ================= */
+
 loginBtn.addEventListener("click", async () => {
 
     const email = document.getElementById("email").value;
@@ -40,7 +45,8 @@ loginBtn.addEventListener("click", async () => {
 
 });
 
-/* AUTH */
+/* ================= AUTH ================= */
+
 onAuthStateChanged(auth, (user) => {
 
     if (user) {
@@ -51,7 +57,8 @@ onAuthStateChanged(auth, (user) => {
 
 });
 
-/* IMAGE PREVIEW */
+/* ================= IMAGE PREVIEW ================= */
+
 iconFile.addEventListener("change", () => {
 
     const file = iconFile.files[0];
@@ -68,10 +75,16 @@ iconFile.addEventListener("change", () => {
     reader.readAsDataURL(file);
 });
 
-/* LOAD GAMES */
+/* ================= LOAD GAMES (NEW FIRST) ================= */
+
 async function loadGames() {
 
-    const snapshot = await getDocs(collection(db, "games"));
+    const q = query(
+        collection(db, "games"),
+        orderBy("createdAt", "desc")
+    );
+
+    const snapshot = await getDocs(q);
 
     gamesList.innerHTML = "";
 
@@ -91,14 +104,15 @@ async function loadGames() {
             </div>
         `;
 
-        /* EDIT */
+        /* ================= EDIT ================= */
+
         div.querySelector(".edit-btn").addEventListener("click", () => {
 
             editingGameId = gameDoc.id;
 
-            document.getElementById("gameName").value = game.name;
-            document.getElementById("version").value = game.version;
-            document.getElementById("downloadLink").value = game.downloadLink;
+            document.getElementById("gameName").value = game.name || "";
+            document.getElementById("version").value = game.version || "";
+            document.getElementById("downloadLink").value = game.downloadLink || "";
 
             document.getElementById("features").value =
                 (game.modFeatures || []).join("\n");
@@ -110,7 +124,8 @@ async function loadGames() {
             addGameBtn.textContent = "Update Game";
         });
 
-        /* DELETE */
+        /* ================= DELETE ================= */
+
         div.querySelector(".delete-btn").addEventListener("click", async () => {
 
             if (!confirm("Delete " + game.name + "?")) return;
@@ -124,7 +139,8 @@ async function loadGames() {
     });
 }
 
-/* ADD / UPDATE GAME */
+/* ================= ADD / UPDATE GAME ================= */
+
 addGameBtn.addEventListener("click", async () => {
 
     const name = document.getElementById("gameName").value;
@@ -138,6 +154,7 @@ addGameBtn.addEventListener("click", async () => {
 
     try {
 
+        /* ================= UPDATE ================= */
         if (editingGameId) {
 
             await updateDoc(doc(db, "games", editingGameId), {
@@ -152,8 +169,10 @@ addGameBtn.addEventListener("click", async () => {
 
             editingGameId = null;
             addGameBtn.textContent = "Add Game";
+        }
 
-        } else {
+        /* ================= ADD ================= */
+        else {
 
             await addDoc(collection(db, "games"), {
                 name,
@@ -161,11 +180,14 @@ addGameBtn.addEventListener("click", async () => {
                 icon: iconBase64,
                 downloadLink,
                 downloads: 0,
-                modFeatures: features
+                modFeatures: features,
+                createdAt: Date.now()   // 🔥 IMPORTANT
             });
 
             alert("Game Added");
         }
+
+        /* ================= RESET FORM ================= */
 
         document.getElementById("gameName").value = "";
         document.getElementById("version").value = "";
