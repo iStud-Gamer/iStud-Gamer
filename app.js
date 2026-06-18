@@ -19,15 +19,7 @@ const closePopup = document.getElementById("closePopup");
 
 async function loadGames() {
 
-    import { query, orderBy } from "firebase/firestore";
-
-const q = query(
-    collection(db, "games"),
-    orderBy("createdAt", "desc")
-);
-
-    // ❌ FIX: only ONE querySnapshot
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = await getDocs(collection(db, "games"));
 
     gamesContainer.innerHTML = "";
 
@@ -41,30 +33,53 @@ const q = query(
 
         card.innerHTML = `
             <img src="${game.icon}" alt="${game.name}">
-
             <h3>${game.name}</h3>
 
             <div class="game-meta">
-
-                <span class="version">
-                    v${game.version}
-                </span>
+                <span class="version">v${game.version}</span>
 
                 <span class="downloads-count">
-                    <i class="fa-solid fa-download download-icon"></i>
+                    <i class="fa-solid fa-download"></i>
                     ${game.downloads || 0}
                 </span>
-
             </div>
 
             <button class="btn mod-btn">
-                <i class="fa-solid fa-crown"></i> Mod Features
+                Mod Features
             </button>
 
             <button class="btn download-btn">
                 Download
             </button>
         `;
+
+        /* MOD FEATURES */
+        card.querySelector(".mod-btn").addEventListener("click", () => {
+
+            featuresList.innerHTML = "";
+
+            (game.modFeatures || []).forEach((f) => {
+                const li = document.createElement("li");
+                li.textContent = f;
+                featuresList.appendChild(li);
+            });
+
+            popup.style.display = "block";
+        });
+
+        /* DOWNLOAD */
+        card.querySelector(".download-btn").addEventListener("click", async () => {
+
+            await updateDoc(doc(db, "games", gameId), {
+                downloads: increment(1)
+            });
+
+            window.open(game.downloadLink, "_blank");
+        });
+
+        gamesContainer.appendChild(card);
+    });
+}
 
         /* ================= MOD FEATURES ================= */
 
